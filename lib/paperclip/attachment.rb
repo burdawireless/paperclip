@@ -39,6 +39,7 @@ module Paperclip
       @default_url       = options[:default_url]
       @default_style     = options[:default_style]
       @storage           = options[:storage]
+      @storage           = @storage.call(self.instance) if @storage.is_a?(Proc)
       @whiny             = options[:whiny_thumbnails] || options[:whiny]
       @convert_options   = options[:convert_options]
       @processors        = options[:processors]
